@@ -1,1 +1,0 @@
-# sports-stat-tracker-backend
