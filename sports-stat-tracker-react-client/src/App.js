@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 import TeamsIndexContainer from './containers/TeamsIndexContainer.js'
 import TeamsFormContainer from './containers/TeamsFormContainer.js'
+import NewPlayerContainer from './containers/NewPlayerContainer.js'
+import TeamShowContainer from './containers/TeamShowContainer.js'
 
 function App() {
 
@@ -35,8 +37,18 @@ function App() {
           <Route exact path='/'>
             <TeamsIndexContainer />
           </Route>       
-          <Route path='/teams/new' component={TeamsFormContainer}>
-          </Route>
+          <Route 
+            path='/teams/new' 
+            component={TeamsFormContainer} 
+            />
+          <Route 
+            path='/teams/:teamID/players/new' 
+            component={NewPlayerContainer} 
+            />
+          <Route 
+            path='/teams/:teamID' 
+            component={TeamShowContainer} 
+            />
         </Switch>
       </Router>
     </div>
