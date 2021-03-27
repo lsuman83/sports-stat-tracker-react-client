@@ -1,5 +1,16 @@
 import React, { Component } from 'react'
+import Select from 'react-select'
 
+const options = [
+    { value: 'Football', label: 'Football'},
+    { value: 'Golf', label: 'Golf'},
+    { value: 'Basketball', label: 'Basketball'},
+    { value: 'Baseball', label: 'Baseball'},
+    { value: 'Softball', label: 'Softball'},
+    { value: 'Soccer', label: 'Soccer'},
+    { value: 'Tennis', label: 'Tennis'},
+    { value: 'Volleyball', label: 'Volleyball'}
+]
 
 class TeamsFormContainer extends Component {
 
@@ -9,7 +20,7 @@ class TeamsFormContainer extends Component {
         this.state = {
             name: '',
             location: '',
-            sport: '',
+            sport: null,
             league_name: ''
         }
 
@@ -46,7 +57,7 @@ class TeamsFormContainer extends Component {
 
     render(){
         return(
-            <form onSubmit={this.handleSubmit}>
+            <form  onSubmit={this.handleSubmit}>
                 <div className='max-w-6xl w-3/4 mx-auto mt-20'>
                     <h1 className='py-4 text-3xl'><strong>Add New Team</strong></h1>
                     <label>
@@ -77,15 +88,16 @@ class TeamsFormContainer extends Component {
                 <div className='max-w-6xl w-3/4 mx-auto mt-10'>
                     <label>
                         Sport
-                        <input 
-                            className='inline-block border border-black mx-4'
-                            id='sport' 
-                            name='sport' 
-                            type='text' 
-                            value={this.state.sport}
-                            onChange={this.handleInputChange}
-                            />
                     </label>
+                    <Select 
+                        className='inline-block border border-black mx-4 '
+                        id='sport' 
+                        name='sport' 
+                        isMulti={true}
+                        options={options}
+                        value={this.state.sport}
+                        onChange={this.handleInputChange}
+                        />
                 </div>
                 <div className='max-w-6xl w-3/4 mx-auto mt-10'>                
                     <label>
