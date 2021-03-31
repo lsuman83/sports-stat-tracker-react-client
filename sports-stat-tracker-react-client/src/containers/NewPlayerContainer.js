@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
-
+import { connect } from 'react-redux'
+import { createPlayer } from '../actions/players.js'
 
 class NewPlayerContainer extends Component {
 
     state = {
         name: '',
         position: '',
-        jersey_number: ''
+        jersey_number: '',
+        errors: {}
     }
 
     handleInputChange = (event) => {
@@ -24,17 +26,18 @@ class NewPlayerContainer extends Component {
         formData.append('player[name]', form.name.value)
         formData.append('player[position]', form.position.value)
         formData.append('player[jersey_number]', form.jersey_number.value)
-        formData.append('player[player_pic]', form.player_pic.files[0], form.player_pic.value)
+        form.player_pic.files[0] && formData.append('player[player_pic]', form.player_pic.files[0], form.player_pic.value)
         formData.append('player[team_id]', this.props.match.params.teamID)
-
-    
+        
     
         this.props.dispatchCreatePlayer(formData)
             .then(playerJSON => {
                 this.props.history.push(`/teams/${this.props.match.params.teamID}`)
             })
-            .catch(error => {
-                console.log(error)
+            .catch(errors => {
+                this.setState({
+                    errors
+                })
             })
         
     }
@@ -57,7 +60,7 @@ class NewPlayerContainer extends Component {
                                     value={this.state.name}
                                     onChange={this.handleInputChange}
                                     type="text" 
-                                    placeholder="Rockets" 
+                                    placeholder="John Smith" 
                                     />
                                 <p class="text-red text-xs italic">Please fill out this field.</p>
                             </div>
@@ -72,7 +75,7 @@ class NewPlayerContainer extends Component {
                                     value={this.state.position}
                                     onChange={this.handleInputChange} 
                                     type="text" 
-                                    placeholder="Orlando, FL" 
+                                    placeholder="WR" 
                                     />
                             </div>
                         </div>
@@ -89,7 +92,7 @@ class NewPlayerContainer extends Component {
                                     value={this.state.jersey_number}
                                     onChange={this.handleInputChange} 
                                     type="text" 
-                                    placeholder="Softball"/>
+                                    placeholder="99"/>
                             </div>
                         
                             <div class="md:w-1/2 px-3">
@@ -118,4 +121,10 @@ class NewPlayerContainer extends Component {
 }
 
 
-export default NewPlayerContainer
+const mapDispatchToProps = dispatch => {
+    return {
+        dispatchCreatePlayer: (formData) => dispatch(createPlayer(formData))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(NewPlayerContainer)

@@ -13,7 +13,7 @@ import TeamShowContainer from './containers/TeamShowContainer.js'
 function App() {
 
   return (
-    <div className="App">
+    <div className='bg-cover h-100vh' style={{backgroundImage: 'url(/sports-stats.png)'}}>
       <Router>
         <nav className='text-center bg-blue-800 text-yellow-300 p-4'>
           <NavLink

@@ -42,7 +42,7 @@ class TeamShowContainer extends Component {
                         <div>{this.props.team.sport}</div>
                         <div>{this.props.team.league_name}</div>
                     </div>
-                    <PlayerList key={this.props.team.id} players={this.props.players} />
+                    <PlayerList key={this.props.team.id} id={this.props.team.id} players={this.props.players} />
                 </div>
             </section>
         )
