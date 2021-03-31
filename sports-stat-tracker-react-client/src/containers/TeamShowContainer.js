@@ -36,7 +36,7 @@ class TeamShowContainer extends Component {
         return(
             <section>
                 <div className='grid auto-rows-min'>
-                    <div className='grid grid-rows-2 text-center'>
+                    <div className='text-center'>
                         <h1 className='font-mono text-xl text-center mt-10'><strong>{this.props.team.name}</strong></h1>
                         <div>{this.props.team.location}</div>
                         <div>{this.props.team.sport}</div>

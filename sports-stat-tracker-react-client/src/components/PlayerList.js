@@ -76,7 +76,7 @@ const PlayerList = ({ players }) => {
             </tbody>
           )}
         </table>
-        <button type='submit' className='rounded-md bg-blue-500 px-4 mx-auto mt-10'>
+        <button type='submit' className='rounded-md bg-blue-500 px-4 mx-auto mt-20'>
           <Link to={`/teams/${players.team_id}/players/new`}>
             New Player
           </Link>
