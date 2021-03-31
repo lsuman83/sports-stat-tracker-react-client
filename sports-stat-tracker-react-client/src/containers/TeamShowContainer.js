@@ -55,7 +55,7 @@ class TeamShowContainer extends Component {
                         <div>{this.props.team.league_name}</div>
                     </div>
                     <PlayerList key={this.props.team.id} players={this.props.players} />
-                    <GamesList  games={this.props.games} />
+                    
                 </div>
             </section>
         )
