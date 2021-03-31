@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
 import PlayerList from '../components/PlayerList.js'
+<<<<<<< Updated upstream
 import { Link } from 'react-router-dom'
+=======
+import GamesList from '../components/GamesList.js'
+import { connect } from 'react-redux'
+import { fetchTeam } from '../actions/teams'
+
+>>>>>>> Stashed changes
 
 class TeamShowContainer extends Component {
 
@@ -44,6 +51,7 @@ class TeamShowContainer extends Component {
         }
         return(
             <section>
+<<<<<<< Updated upstream
                 <div>
                     <h1 className='font-mono text-xl text-center mt-10'><strong>{this.state.team.name}</strong></h1>
                     <div className='grid grid-rows-3 justify-center'>
@@ -58,9 +66,45 @@ class TeamShowContainer extends Component {
                         New Player
                     </Link>
                 </button>
+=======
+                <div className='grid auto-rows-min'>
+                    <div className='text-center'>
+                        <h1 className='font-mono text-xl text-center mt-10'><strong>{this.props.team.name}</strong></h1>
+                        <div>{this.props.team.location}</div>
+                        <div>{this.props.team.sport}</div>
+                        <div>{this.props.team.league_name}</div>
+                    </div>
+                    <PlayerList key={this.props.team.id} players={this.props.players} />
+                    <GamesList  games={this.props.games} />
+                </div>
+>>>>>>> Stashed changes
             </section>
         )
     }
 }
 
+<<<<<<< Updated upstream
 export default TeamShowContainer
+=======
+
+const mapStateToProps = (state, { match }) => {
+    const teamId = match.params.teamID
+    const loadingState = state.players.teamsLoaded[teamId] || 
+    state.games.teamsLoaded[teamId] || 'notStarted'
+
+    return {
+        team: state.teams.list.find(team => team.id == teamId),
+        players: state.players.list.filter(player => player.team_id == teamId),
+        games: state.games.list.filter(game => game.team_id !== teamId),    
+        loadingState
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getTeam: (teamId) => dispatch(fetchTeam(teamId))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TeamShowContainer)
+>>>>>>> Stashed changes
