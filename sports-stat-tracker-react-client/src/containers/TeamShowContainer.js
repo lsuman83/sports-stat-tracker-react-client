@@ -57,13 +57,11 @@ class TeamShowContainer extends Component {
 
 const mapStateToProps = (state, { match }) => {
     const teamId = match.params.teamID
-    const loadingState = state.players.teamsLoaded[teamId] && 
-    state.games.teamsLoaded[teamId] || 'notStarted'
+    const loadingState = state.players.teamsLoaded[teamId] || 'notStarted'
     
     return {
         team: state.teams.list.find(team => team.id == teamId),
-        players: state.players.list.filter(player => player.team_id == teamId),
-        games: state.games.list.filter(game => game.team_id !== teamId),    
+        players: state.players.list.filter(player => player.team_id == teamId),    
         loadingState
     }
 }
