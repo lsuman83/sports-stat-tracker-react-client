@@ -35,20 +35,15 @@ class TeamShowContainer extends Component {
         
         return(
             <section>
-                <div>
-                    <h1 className='font-mono text-xl text-center mt-10'><strong>{this.props.team.name}</strong></h1>
-                    <div className='grid grid-rows-3 justify-center'>
+                <div className='grid auto-rows-min'>
+                    <div className='grid grid-rows-2 text-center'>
+                        <h1 className='font-mono text-xl text-center mt-10'><strong>{this.props.team.name}</strong></h1>
                         <div>{this.props.team.location}</div>
                         <div>{this.props.team.sport}</div>
                         <div>{this.props.team.league_name}</div>
                     </div>
                     <PlayerList key={this.props.team.id} players={this.props.players} />
                 </div>
-                <button type='submit' className='rounded-md bg-blue-500 p-1 ml-20'>
-                    <Link to={`/teams/${this.props.match.params.teamID}/players/new`}>
-                        New Player
-                    </Link>
-                </button>
             </section>
         )
     }

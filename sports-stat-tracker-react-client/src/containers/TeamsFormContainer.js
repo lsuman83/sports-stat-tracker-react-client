@@ -1,38 +1,38 @@
 import React, { Component } from 'react'
-import Select from 'react-select'
+import { connect } from 'react-redux'
+import { createTeam } from '../actions/teams.js'
 
 const options = [
-    { value: 'Football', label: 'Football'},
-    { value: 'Golf', label: 'Golf'},
-    { value: 'Basketball', label: 'Basketball'},
-    { value: 'Baseball', label: 'Baseball'},
-    { value: 'Softball', label: 'Softball'},
-    { value: 'Soccer', label: 'Soccer'},
-    { value: 'Tennis', label: 'Tennis'},
-    { value: 'Volleyball', label: 'Volleyball'}
+    { value: 'Football', label: 'Football', name: 'sport', id: 1},
+    { value: 'Golf', label: 'Golf', name: 'sport', id: 2},
+    { value: 'Basketball', label: 'Basketball', name: 'sport', id: 3},
+    { value: 'Baseball', label: 'Baseball', name: 'sport', id: 4},
+    { value: 'Softball', label: 'Softball', name: 'sport', id: 5},
+    { value: 'Soccer', label: 'Soccer', name: 'sport', id: 6},
+    { value: 'Tennis', label: 'Tennis', name: 'sport', id: 7},
+    { value: 'Volleyball', label: 'Volleyball', name: 'sport', id: 8}
 ]
 
 class TeamsFormContainer extends Component {
 
-    constructor(){
-        super()
-
-        this.state = {
+        state = {
             name: '',
             location: '',
             sport: null,
-            league_name: ''
+            league_name: '',
+            errors: {}
         }
-
-        this.handleSubmit = this.handleSubmit.bind(this)
-    }
     
 
     handleInputChange = (event) => {
-        
+        if (event.target) {
         this.setState({
-            [event.target.name]: event.target.value
-        })
+                [event.target.name]: event.target.value
+        })}else{
+            this.setState({
+                [event[0].name]: event[0].value
+            })
+        }
         
     }
 
@@ -40,18 +40,15 @@ class TeamsFormContainer extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
 
-        fetch('http://localhost:3001/teams', {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({team: this.state})
-        })
-            .then(resp => resp.json())
-            .then(data => {
+        this.props.dispatchCreateTeam(this.state)
+            .then(teamJSON => {
                 this.props.history.push('/')
             })
+            .catch((errors) => {
+                    this.setState({
+                        errors
+                    })
+                })
     }
 
 
@@ -142,4 +139,12 @@ class TeamsFormContainer extends Component {
 }
 
 
-export default TeamsFormContainer
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        dispatchCreateTeam: (formData) => dispatch(createTeam(formData))
+    }
+}
+
+
+export default connect(null, mapDispatchToProps)(TeamsFormContainer)
