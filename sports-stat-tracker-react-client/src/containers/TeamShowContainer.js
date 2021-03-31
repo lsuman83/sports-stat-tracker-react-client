@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PlayerList from '../components/PlayerList.js'
-import GamesList from '../components/GamesList.js'
+
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchTeam } from '../actions/teams'
