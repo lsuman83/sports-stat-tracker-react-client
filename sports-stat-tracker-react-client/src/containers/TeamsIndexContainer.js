@@ -1,41 +1,39 @@
 import React, { Component } from 'react'
 import TeamsList from '../components/TeamsList.js'
-
+import { connect } from 'react-redux'
+import { fetchTeams } from '../actions/teams.js'
 
 class TeamsIndexContainer extends Component {
-
-    state = {
-        teams: [],
-        loading: true
-    }
-    
+ 
     componentDidMount() {
-        return fetch('http://localhost:3001/teams', {
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(resp => resp.json())
-            .then(teamsJSON => {
-                    setTimeout(() => {
-                        this.setState({
-                            teams: teamsJSON,
-                            loading: false
-                        })
-                    }, 1000)
-                }) 
+        this.props.getTeams()
     }
+
     render(){
+        if(this.props.loadingState === 'notStarted'){
+            return null
+        }
         return(
             <section className='max-w-6xl w-11/12 mx-auto mt-20'>
-                {this.state.loading ? 'loading spinner' : <TeamsList teams={this.state.teams} />}
+                {this.props.loadingState === 'inProgress' ? 'loading spinner' : <TeamsList teams={this.props.teams} />}
             </section>
         )
     }
 }
 
 
+const mapStateToProps = state => {
+    return {
+        teams: state.teams.list,
+        loadingState: state.teams.loadingState
+    }
+}
 
-export default TeamsIndexContainer
+const mapDispatchToProps = dispatch => {
+    return {
+        getTeams: () => {dispatch(fetchTeams())}
+    }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(TeamsIndexContainer)
