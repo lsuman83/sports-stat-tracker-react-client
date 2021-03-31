@@ -27,18 +27,9 @@ class NewPlayerContainer extends Component {
         formData.append('player[player_pic]', form.player_pic.files[0], form.player_pic.value)
         formData.append('player[team_id]', this.props.match.params.teamID)
 
-<<<<<<< Updated upstream
-        
-        fetch(`http://localhost:3001/players`, {
-            method: 'POST',
-            body: formData
-        })
-            .then(resp => resp.json())
-=======
     
     
         this.props.dispatchCreatePlayer(formData)
->>>>>>> Stashed changes
             .then(playerJSON => {
                 this.props.history.push(`/teams/${this.props.match.params.teamID}`)
             })

@@ -1,13 +1,9 @@
 import React, { Component } from 'react'
 import PlayerList from '../components/PlayerList.js'
-<<<<<<< Updated upstream
-import { Link } from 'react-router-dom'
-=======
 import GamesList from '../components/GamesList.js'
 import { connect } from 'react-redux'
 import { fetchTeam } from '../actions/teams'
 
->>>>>>> Stashed changes
 
 class TeamShowContainer extends Component {
 
@@ -51,22 +47,6 @@ class TeamShowContainer extends Component {
         }
         return(
             <section>
-<<<<<<< Updated upstream
-                <div>
-                    <h1 className='font-mono text-xl text-center mt-10'><strong>{this.state.team.name}</strong></h1>
-                    <div className='grid grid-rows-3 justify-center'>
-                        <div>{this.state.team.location}</div>
-                        <div>{this.state.team.sport}</div>
-                        <div>{this.state.team.league_name}</div>
-                    </div>
-                    <PlayerList key={this.state.team.id} players={this.state.players} />
-                </div>
-                <button type='submit' className='rounded-md bg-blue-500 p-1 ml-20'>
-                    <Link to='/teams/{this.props.match.params.teamID}/players/new'>
-                        New Player
-                    </Link>
-                </button>
-=======
                 <div className='grid auto-rows-min'>
                     <div className='text-center'>
                         <h1 className='font-mono text-xl text-center mt-10'><strong>{this.props.team.name}</strong></h1>
@@ -77,15 +57,11 @@ class TeamShowContainer extends Component {
                     <PlayerList key={this.props.team.id} players={this.props.players} />
                     <GamesList  games={this.props.games} />
                 </div>
->>>>>>> Stashed changes
             </section>
         )
     }
 }
 
-<<<<<<< Updated upstream
-export default TeamShowContainer
-=======
 
 const mapStateToProps = (state, { match }) => {
     const teamId = match.params.teamID
@@ -107,4 +83,3 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(TeamShowContainer)
->>>>>>> Stashed changes

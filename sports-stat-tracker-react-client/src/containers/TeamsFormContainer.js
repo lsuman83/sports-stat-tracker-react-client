@@ -58,68 +58,6 @@ class TeamsFormContainer extends Component {
     render(){
         return(
             <form  onSubmit={this.handleSubmit}>
-<<<<<<< Updated upstream
-                <div className='max-w-6xl w-3/4 mx-auto mt-20'>
-                    <h1 className='py-4 text-3xl'><strong>Add New Team</strong></h1>
-                    <label>
-                        Team Name
-                        <input 
-                            className='inline-block border border-black mx-4'
-                            id='name' 
-                            name='name' 
-                            type='text' 
-                            value={this.state.name}
-                            onChange={this.handleInputChange}
-                            />
-                    </label>
-                </div>
-                <div className='max-w-6xl w-3/4 mx-auto mt-10'>                
-                    <label>
-                        Location
-                        <input 
-                            className='inline-block border border-black mx-4'
-                            id='location' 
-                            name='location' 
-                            type='text' 
-                            value={this.state.location}
-                            onChange={this.handleInputChange}
-                            />
-                    </label>
-                </div>
-                <div className='max-w-6xl w-3/4 mx-auto mt-10'>
-                    <label>
-                        Sport
-                    </label>
-                    <Select 
-                        className='inline-block border border-black mx-4 '
-                        id='sport' 
-                        name='sport' 
-                        isMulti={true}
-                        options={options}
-                        value={this.state.sport}
-                        onChange={this.handleInputChange}
-                        />
-                </div>
-                <div className='max-w-6xl w-3/4 mx-auto mt-10'>                
-                    <label>
-                        League
-                        <input 
-                            className='inline-block border border-black mx-4'
-                            id='league_name' 
-                            name='league_name' 
-                            type='text' 
-                            value={this.state.league_name}
-                            onChange={this.handleInputChange}
-                            />
-                    </label>
-                </div>
-                    
-                <br />
-                <div className='max-w-6xl w-3/4 mx-auto'>
-                    <button className='rounded-md px-4 mt-10 bg-blue-500' type='submit'>
-                        Add Team
-                    </button>
-=======
                 <h1 className='py-4 text-3xl text-center'><strong>Add New Team</strong></h1>
                 <div class="bg-blue-400 max-w-3xl mx-auto shadow-lg rounded-lg px-8 pt-10 pb-8 mb-4 flex flex-col my-2">
                     <div class="-mx-3 md:flex mb-6">
@@ -197,7 +135,6 @@ class TeamsFormContainer extends Component {
                             Add Team
                         </button>
                     </div>
->>>>>>> Stashed changes
                 </div>
             </form>
         )
