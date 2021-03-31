@@ -55,7 +55,7 @@ class TeamsFormContainer extends Component {
     render(){
         return(
             <form  onSubmit={this.handleSubmit}>
-                <h1 className='py-4 text-3xl text-center'><strong>Add New Team</strong></h1>
+                <h1 className='py-4 text-3xl text-center text-white'><strong>Add New Team</strong></h1>
                 <div class="bg-blue-400 max-w-3xl mx-auto shadow-lg rounded-lg px-8 pt-10 pb-8 mb-4 flex flex-col my-2">
                     <div class="-mx-3 md:flex mb-6">
                         <div class="md:w-1/2 px-3 mb-6 md:mb-0">

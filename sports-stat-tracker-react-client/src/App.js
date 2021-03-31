@@ -13,9 +13,9 @@ import TeamShowContainer from './containers/TeamShowContainer.js'
 function App() {
 
   return (
-    <div className='bg-cover h-100vh' style={{backgroundImage: 'url(/sports-stats.png)'}}>
+    <div className='grid grid-rows-3 bg-cover 100vh' style={{backgroundImage: 'url(https://www.greenbiz.com/sites/default/files/styles/panopoly_image_full/public/images/articles/featured/sports_eugene_onischenko_sstock.jpg?itok=h-0TKwO4)'}}>
       <Router>
-        <nav className='text-center bg-blue-800 text-yellow-300 p-4'>
+        <nav className='h-20 text-center bg-blue-800 text-yellow-300 p-4'>
           <NavLink
             className='inline-block px-4 py-2' 
             activeClassName='text-black'
