@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { createTeam } from '../actions/teams.js'
 
+
 const options = [
     { value: 'Football', label: 'Football', name: 'sport', id: 1},
     { value: 'Golf', label: 'Golf', name: 'sport', id: 2},

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import TeamsList from '../components/TeamsList.js'
 import { connect } from 'react-redux'
 import { fetchTeams } from '../actions/teams.js'
+import IncrementorComponent from '../components/IncrementorComponent.js'
 
 class TeamsIndexContainer extends Component {
  
@@ -15,7 +16,11 @@ class TeamsIndexContainer extends Component {
         }
         return(
             <section className='max-w-6xl w-11/12 mx-auto mt-20'>
-                {this.props.loadingState === 'inProgress' ? 'loading spinner' : <TeamsList teams={this.props.teams} />}
+                {this.props.loadingState === 'inProgress' ? 'loading spinner' :            
+                    (<div>
+                        <IncrementorComponent />,
+                        <TeamsList teams={this.props.teams} />
+                    </div>)}
             </section>
         )
     }
