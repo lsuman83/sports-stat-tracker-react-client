@@ -46,7 +46,7 @@ class NewPlayerContainer extends Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <div className='max-w-6xl w-3/4 mx-auto mt-20'>
-                    <h1 className='py-4 text-3xl text-center'><strong>Add Player</strong></h1>
+                    <h1 className='py-4 text-3xl text-white text-center'><strong>Add Player</strong></h1>
                     <div class="bg-blue-400 max-w-3xl w-1/2 shadow-lg rounded-lg px-8 pt-10 pb-8 mb-4 mx-auto flex flex-col my-2">
                         <div class="-mx-3 md:flex mb-6">
                             <div class="md:w-1/2 px-3 mb-6 md:mb-0">

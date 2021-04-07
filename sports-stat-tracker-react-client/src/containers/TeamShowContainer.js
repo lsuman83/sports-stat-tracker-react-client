@@ -37,10 +37,12 @@ class TeamShowContainer extends Component {
             <section>
                 <div className='grid auto-rows-min'>
                     <div className='text-center'>
-                        <h1 className='font-mono text-xl text-center mt-10'><strong>{this.props.team.name}</strong></h1>
-                        <div>{this.props.team.location}</div>
-                        <div>{this.props.team.sport}</div>
-                        <div>{this.props.team.league_name}</div>
+                        <h1 className='font-mono text-xl text-center text-white mt-10'><strong>{this.props.team.name}</strong></h1>
+                        <div className='text-white'>
+                            <div>{this.props.team.location}</div>
+                            <div>{this.props.team.sport}</div>
+                            <div>{this.props.team.league_name}</div>
+                        </div>
                     </div>
                     <PlayerList key={this.props.team.id} id={this.props.team.id} players={this.props.players} />
                 </div>
