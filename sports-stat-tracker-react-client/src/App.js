@@ -1,40 +1,24 @@
-import React from "react";
+ import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  NavLink
+  Route
 } from "react-router-dom";
+import Navbar from './components/Navbar'
 import TeamsIndexContainer from './containers/TeamsIndexContainer.js'
 import TeamsFormContainer from './containers/TeamsFormContainer.js'
 import NewPlayerContainer from './containers/NewPlayerContainer.js'
-import TeamShowContainer from './containers/TeamShowContainer.js'
+import TeamShowContainer from './containers/teams/TeamShowContainer.js'
+
 
 function App() {
 
   return (
     <div className='grid grid-rows-3 bg-cover 100vh' style={{backgroundImage: 'url(https://www.greenbiz.com/sites/default/files/styles/panopoly_image_full/public/images/articles/featured/sports_eugene_onischenko_sstock.jpg?itok=h-0TKwO4)'}}>
       <Router>
-        <nav className='h-20 text-center bg-blue-800 text-yellow-300 p-4'>
-          <NavLink
-            className='inline-block px-4 py-2' 
-            activeClassName='text-black'
-            exact
-            to='/'
-            >
-              Teams
-          </NavLink>
-
-          <NavLink 
-            className='inline-block px-4 py-2' 
-            activeClassName='text-black'
-            to='/teams/new'
-            >
-              New Team
-          </NavLink>
-        </nav>
+        <Navbar />
         <Switch>
-          <Route exact path='/'>
+          <Route exact path='/teams'>
             <TeamsIndexContainer />
           </Route>       
           <Route 
