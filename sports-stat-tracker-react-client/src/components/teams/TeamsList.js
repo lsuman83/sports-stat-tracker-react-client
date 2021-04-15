@@ -3,7 +3,6 @@ import TeamsListItem from './TeamsListItem.js'
 
 
 const TeamsList = ({ teams }) => {
-
     return (
         <section>
             <h1 className='py-4 text-3xl text-white'><strong>My Teams</strong></h1>

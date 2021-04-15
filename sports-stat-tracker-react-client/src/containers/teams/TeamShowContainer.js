@@ -3,7 +3,7 @@ import PlayerList from '../components/PlayerList.js'
 
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { fetchTeam } from '../actions/teams'
+import { fetchTeam } from '../../actions/teams'
 
 
 class TeamShowContainer extends Component {
